@@ -9,13 +9,14 @@ console.log({ CATEGORIES, TASKS });
 
 function App() {
   const [myTasks, setMyTasks] = useState(TASKS);
+  const [myType, setMyType] = useState("All");
   
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter mcats={CATEGORIES} setType={setMyType} />
       <NewTaskForm />
-      <TaskList mytasks={myTasks} mySetTasks={setMyTasks} />
+      <TaskList mytasks={myTasks} showtype={myType} mySetTasks={setMyTasks} />
     </div>
   );
 }

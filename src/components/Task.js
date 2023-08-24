@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({text, catg}) {
+function Task({text, catg, remTask}) {
   if (text === undefined || text === null || catg === undefined || catg === null)
   {
     throw new Error("the text and the category for the new task must be defined and not null!");
@@ -18,7 +18,7 @@ function Task({text, catg}) {
     <div className="task">
       <div className="label">{catg}</div>
       <div className="text">{text}</div>
-      <button className="delete">X</button>
+      <button className="delete" onClick={remTask}>X</button>
     </div>
   );
 }

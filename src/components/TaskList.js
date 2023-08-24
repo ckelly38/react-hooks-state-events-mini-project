@@ -1,10 +1,20 @@
 import React from "react";
 import Task from "./Task";
-import { v4 as uuid } from "uuid";
+//import { v4 as uuid } from "uuid";
 
-function TaskList({mytasks}) {
+function TaskList({mytasks, mySetTasks}) {
+  function handleDelTask(event)
+  {
+    let mytext = event.target.parentNode.getElementsByClassName("text")[0].textContent;
+    let mynwtasks = mytasks.filter((mtask) => {
+      if (mtask.text === mytext) return false;
+      else return true;
+    });
+    mySetTasks(mynwtasks);
+  }
+
   let mytasksarr = mytasks.map((mtask) => {
-    return ( <Task key={uuid()} text={mtask.text} catg={mtask.category}/> );
+    return ( <Task key={mtask.text} text={mtask.text} catg={mtask.category} remTask={handleDelTask} /> );
   });
 
   return (

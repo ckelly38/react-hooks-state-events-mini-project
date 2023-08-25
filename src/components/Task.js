@@ -1,6 +1,9 @@
 import React from "react";
 
 function Task({text, catg, remTask}) {
+  //console.log("text = ", text);
+  //console.log("catg = ", catg);
+  //console.log("remTask = ", remTask);
   if (text === undefined || text === null || catg === undefined || catg === null)
   {
     throw new Error("the text and the category for the new task must be defined and not null!");

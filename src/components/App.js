@@ -11,11 +11,41 @@ function App() {
   const [myTasks, setMyTasks] = useState(TASKS);
   const [myType, setMyType] = useState("All");
   
+  function onTaskFormSubmit(nwTask)
+  {
+    //console.log("nwTask", nwTask);
+    if (nwTask === undefined || nwTask === null) throw new Error("the new task is not allowed to be null!");
+    else
+    {
+      if (myTasks === undefined || myTasks === null || myTasks.length < 1);
+      else
+      {
+        for (let n = 0; n < myTasks.length; n++)
+        {
+          if (myTasks[n].text === nwTask.text)
+          {
+            if (myTasks[n].category === nwTask.category)
+            {
+              const myerrmsg = "Error: task is already on the list with text (" + myTasks[n].text +
+                ") and category (" + myTasks[n].category + ")!";
+              alert(myerrmsg);
+              throw new Error(myerrmsg);
+            }
+            //else;//do nothing
+          }
+          //else;//do nothing
+        }
+      }
+
+      setMyTasks([...myTasks, nwTask]);
+    }
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter mcats={CATEGORIES} setType={setMyType} />
-      <NewTaskForm />
+      <NewTaskForm mcats={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
       <TaskList mytasks={myTasks} showtype={myType} mySetTasks={setMyTasks} />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import Task from "./Task";
-//import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 
 function TaskList({mytasks, showtype, mySetTasks}) {
   function handleDelTask(event)
@@ -17,7 +17,8 @@ function TaskList({mytasks, showtype, mySetTasks}) {
   if (showtype === "All") mdsptasks = mytasks;
   else mdsptasks = mytasks.filter((mtask) => (mtask.category === showtype));
   let mytasksarr = mdsptasks.map((mtask) => {
-    return ( <Task key={mtask.text} text={mtask.text} catg={mtask.category} remTask={handleDelTask} /> );
+    //console.log("mtask = ", mtask);
+    return ( <Task key={uuid()} text={mtask.text} catg={mtask.category} remTask={handleDelTask} /> );
   });
 
   return (

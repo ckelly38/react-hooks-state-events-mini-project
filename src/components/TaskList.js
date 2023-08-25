@@ -2,11 +2,7 @@ import React from "react";
 import Task from "./Task";
 import { v4 as uuid } from "uuid";
 
-function TaskList({tasks, category, mySetTasks}) {
-  let mcat = null;
-  if (category === undefined || category === null) mcat = "All";
-  else mcat = category;
-
+function TaskList({tasks, category = "All", mySetTasks}) {
   function handleDelTask(event)
   {
     let mytext = event.target.parentNode.getElementsByClassName("text")[0].textContent;
@@ -19,8 +15,8 @@ function TaskList({tasks, category, mySetTasks}) {
   }
 
   let mdsptasks = null;
-  if (mcat === "All") mdsptasks = tasks;
-  else mdsptasks = tasks.filter((mtask) => (mtask.category === mcat));
+  if (category === "All") mdsptasks = tasks;
+  else mdsptasks = tasks.filter((mtask) => (mtask.category === category));
   let mytasksarr = mdsptasks.map((mtask) => {
     //console.log("mtask = ", mtask);
     return ( <Task key={uuid()} text={mtask.text} category={mtask.category} remTask={handleDelTask} /> );

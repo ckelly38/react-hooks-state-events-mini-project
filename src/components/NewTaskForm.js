@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-function NewTaskForm({mcats, onTaskFormSubmit}) {
-  const myusecats = mcats.filter((mcat) => (mcat !== "All"));
+function NewTaskForm({categories, onTaskFormSubmit}) {
+  const myusecats = categories.filter((mcat) => (mcat !== "All"));
   const myopts = myusecats.map((mcat) => {
     return ( <option key={mcat}>{mcat}</option> );
   });

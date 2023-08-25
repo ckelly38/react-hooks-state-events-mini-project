@@ -44,9 +44,9 @@ function App() {
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter mcats={CATEGORIES} setType={setMyType} />
-      <NewTaskForm mcats={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
-      <TaskList mytasks={myTasks} showtype={myType} mySetTasks={setMyTasks} />
+      <CategoryFilter categories={CATEGORIES} setType={setMyType} />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
+      <TaskList tasks={myTasks} category={myType} mySetTasks={setMyTasks} />
     </div>
   );
 }
